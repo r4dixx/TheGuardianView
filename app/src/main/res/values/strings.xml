@@ -1,3 +1,4 @@
 <resources>
+    <!-- App title [CHAR MIN=1]-->
     <string name="app_name">The Guardian View</string>
 </resources>

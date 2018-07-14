@@ -1,0 +1,59 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardViewTheme"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/activity_margins"
+    android:layout_marginRight="@dimen/activity_margins"
+    android:layout_marginTop="@dimen/activity_margins">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding">
+
+        <ImageView
+            android:id="@+id/card_image"
+            style="@style/CardViewImageTheme"
+            android:layout_width="@dimen/cardview_image_size"
+            android:layout_height="@dimen/cardview_image_size"
+            android:layout_marginRight="@dimen/image_margin"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/card_image"
+            android:layout_toRightOf="@id/card_image"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/card_title"
+                style="@style/CardViewTitleTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingBottom="@dimen/activity_margins"
+                tools:text="The Guardian view on the cabinet Brexiters" />
+
+            <FrameLayout
+                android:layout_width="@dimen/cardview_button_width"
+                android:layout_height="@dimen/cardview_button_height"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/button_bg_outline">
+
+                <Button
+                    android:id="@+id/card_button"
+                    android:layout_width="@dimen/cardview_button_width"
+                    android:layout_height="@dimen/cardview_button_height"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/colorButtonText"
+                    tools:text="Read this piece" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

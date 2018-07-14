@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- App -->
+    <color name="colorPrimary">@color/cod_gray</color>
+    <color name="colorPrimaryDark">@color/cod_gray</color>
+    <color name="colorAccent">@color/white</color>
+    <color name="colorBackground">@color/colorAccent</color>
+
+    <!-- Cards -->
+    <color name="colorCardBackground">@color/blue_900</color>
+
+    <!-- Text -->
+    <color name="colorTitle">@color/colorAccent</color>
+
+    <!-- Button -->
+    <color name="colorButtonBackground">@color/yellow_a400</color>
+    <color name="colorButtonText">@color/cod_gray</color>
+
+
 </resources>

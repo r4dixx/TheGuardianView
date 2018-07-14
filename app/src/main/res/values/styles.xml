@@ -2,10 +2,46 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="cardViewStyle">@style/CardView</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- ListView theme -->
+    <style name="ListViewTheme">
+        <item name="android:paddingBottom">@dimen/activity_margins</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:dividerHeight">@dimen/listview_divider_height</item>
+        <item name="android:divider">@null</item>
+        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:scrollbarThumbVertical">@color/colorPrimary</item>
+        <item name="android:scrollbarSize">@dimen/scrollbar_size</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <!-- CardView theme -->
+    <style name="CardViewTheme" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="cardBackgroundColor">@color/colorCardBackground</item>
+        <item name="cardElevation">@dimen/cardview_elevation</item>
+        <item name="cardCornerRadius">@dimen/cardview_radius</item>
+    </style>
+
+    <!-- CardView Image theme -->
+    <style name="CardViewImageTheme">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!-- CardView Title theme -->
+    <style name="CardViewTitleTheme" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:textSize">@dimen/cardview_title_text_size</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-light</item>
+    </style>
 </resources>
