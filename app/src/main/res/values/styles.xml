@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="cardViewStyle">@style/CardView</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/white</item>
     </style>
 
     <!-- ListView theme -->
@@ -37,11 +38,21 @@
 
     <!-- CardView Title theme -->
     <style name="CardViewTitleTheme" parent="Base.TextAppearance.AppCompat">
-        <item name="android:textColor">@color/colorTitle</item>
-        <item name="android:textSize">@dimen/cardview_title_text_size</item>
-        <item name="android:maxLines">2</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:textStyle">bold</item>
         <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/yellow_a400</item>
+        <item name="android:textSize">@dimen/cardview_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
+
+    <!-- CardView Description theme -->
+    <style name="CardViewDescTheme" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:textSize">@dimen/cardview_desc_text_size</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

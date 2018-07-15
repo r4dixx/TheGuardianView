@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Material color names -->
-
-    <color name="blue_900">@color/blumine</color>
     <color name="yellow_a400">@color/turbo</color>
+    <color name="blue_900">@color/blumine</color>
 
     <!-- "Regular" color names -->
-    <color name="blumine">#1c5388</color>
-    <color name="turbo">#fbeb00</color>
-    <color name="cod_gray">#121212</color>
+    <color name="transparent">@android:color/transparent</color>
     <color name="white">#ffffff</color>
+    <color name="turbo">#fbeb00</color>
+    <color name="blumine">#1c5388</color>
+    <color name="cod_gray">#121212</color>
 </resources>
