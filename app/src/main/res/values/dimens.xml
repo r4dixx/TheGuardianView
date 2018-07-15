@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Sizes -->
-    <dimen name="cardview_image_size">116dp</dimen>
-    <dimen name="cardview_title_text_size">20sp</dimen>
-    <dimen name="cardview_desc_text_size">14sp</dimen>
-    <dimen name="cardview_button_width">132dp</dimen>
-    <dimen name="cardview_button_height">36dp</dimen>
-    <dimen name="cardview_button_outline">1dp</dimen>
+    <!-- Dimensions -->
+    <dimen name="card_button_height">36dp</dimen>
+    <dimen name="card_button_outline">1dp</dimen>
     <dimen name="scrollbar_size">2dp</dimen>
 
     <!-- Margins/Padding -->
     <dimen name="activity_margins">16dp</dimen>
+    <dimen name="toolbar_padding">8dp</dimen>
     <dimen name="card_padding">16dp</dimen>
-    <dimen name="image_margin">16dp</dimen>
+    <dimen name="card_title_padding">4dp</dimen>
+    <dimen name="card_desc_padding">16dp</dimen>
+    <dimen name="card_button_padding">12dp</dimen>
+    <dimen name="card_button_drawable_padding">8dp</dimen>
 
     <!-- Elevation -->
-    <dimen name="cardview_elevation">@dimen/cardview_default_elevation</dimen>
-    <dimen name="action_bar_elevation">0dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
 
     <!-- Radius -->
-    <dimen name="cardview_radius">8dp</dimen>
+    <dimen name="card_radius">8dp</dimen>
+    <dimen name="card_button_radius">6dp</dimen>
 
-    <!-- Divider -->
-    <dimen name="listview_divider_height">0dp</dimen>
+    <!-- Text sizes -->
+    <dimen name="toolbar_title_text_size">24sp</dimen>
+    <dimen name="card_title_text_size">20sp</dimen>
+    <dimen name="card_desc_text_size">14sp</dimen>
 
 </resources>

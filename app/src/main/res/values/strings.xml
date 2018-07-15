@@ -1,4 +1,10 @@
 <resources>
-    <!-- App title [CHAR MIN=1]-->
-    <string name="app_name">The Guardian View</string>
+    <!-- App name [CHAR MIN=1]-->
+    <string name="app_name">The Guardian view</string>
+
+    <!-- Activity title [CHAR MIN=1]-->
+    <string name="activity_title">The Guardian view on&#8230;</string>
+
+    <!-- Button text [CHAR MIN=1] [CHAR MAX=16]-->
+    <string name="card_button_text">Read the piece</string>
 </resources>

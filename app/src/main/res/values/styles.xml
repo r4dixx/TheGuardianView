@@ -6,53 +6,59 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+    </style>
+
+    <!-- Toolbar theme -->
+    <style name="ToolbarTextTheme" parent="Base.TextAppearance.AppCompat">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- ListView theme -->
-    <style name="ListViewTheme">
-        <item name="android:paddingBottom">@dimen/activity_margins</item>
-        <item name="android:clipToPadding">false</item>
-        <item name="android:dividerHeight">@dimen/listview_divider_height</item>
-        <item name="android:divider">@null</item>
-        <item name="android:drawSelectorOnTop">true</item>
-        <item name="android:scrollbarThumbVertical">@color/colorPrimary</item>
+    <style name="ListViewTheme" parent="Base.Widget.AppCompat.ListView">
+        <item name="android:divider">@color/transparent</item>
+        <item name="android:dividerHeight">@dimen/activity_margins</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:orientation">vertical</item>
         <item name="android:scrollbarSize">@dimen/scrollbar_size</item>
-        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarThumbVertical">@color/colorCardBackground</item>
     </style>
 
     <!-- CardView theme -->
-    <style name="CardViewTheme" parent="CardView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:orientation">vertical</item>
+    <style name="CardTheme" parent="CardView">
         <item name="cardBackgroundColor">@color/colorCardBackground</item>
-        <item name="cardElevation">@dimen/cardview_elevation</item>
-        <item name="cardCornerRadius">@dimen/cardview_radius</item>
-    </style>
-
-    <!-- CardView Image theme -->
-    <style name="CardViewImageTheme">
-        <item name="android:scaleType">centerCrop</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardCornerRadius">@dimen/card_radius</item>
     </style>
 
     <!-- CardView Title theme -->
-    <style name="CardViewTitleTheme" parent="Base.TextAppearance.AppCompat">
+    <style name="CardTitleTheme" parent="Base.TextAppearance.AppCompat">
         <item name="fontFamily">sans-serif-light</item>
-        <item name="android:textColor">@color/yellow_a400</item>
-        <item name="android:textSize">@dimen/cardview_title_text_size</item>
+        <item name="android:textColor">@color/colorCardTitle</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:maxLines">1</item>
+        <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
 
     <!-- CardView Description theme -->
-    <style name="CardViewDescTheme" parent="Base.TextAppearance.AppCompat">
+    <style name="CardDescTheme" parent="Base.TextAppearance.AppCompat">
         <item name="fontFamily">sans-serif-light</item>
-        <item name="android:textColor">@color/colorTitle</item>
-        <item name="android:textSize">@dimen/cardview_desc_text_size</item>
-        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/colorCardDesc</item>
+        <item name="android:textSize">@dimen/card_desc_text_size</item>
+        <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
 
+    <!-- CardView Button theme -->
+    <style name="CardButtonTheme" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/colorCardButtonText</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
 </resources>

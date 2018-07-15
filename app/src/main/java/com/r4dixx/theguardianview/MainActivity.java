@@ -12,9 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Sets the toolbar as the app bar for the activity
+        // Sets the toolbar as the app bar for the activity and hides title to allow custom text
         android.support.v7.widget.Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // Light action bar and navigation bar
         // a la Google News and cie

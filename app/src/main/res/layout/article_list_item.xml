@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        style="@style/CardTheme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_margins"
+        android:layout_marginRight="@dimen/activity_margins"
+        app:contentPadding="@dimen/card_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cardTitle"
+                style="@style/CardTitleTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/card_title_padding"
+                tools:text="Alien life" />
+
+            <TextView
+                android:id="@+id/cardDesc"
+                style="@style/CardDescTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/card_desc_padding"
+                tools:text="What if it’s not there?" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_outline">
+
+                <Button
+                    android:id="@+id/cardButton"
+                    style="@style/CardButtonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/card_button_height"
+                    android:drawablePadding="@dimen/card_button_drawable_padding"
+                    android:drawableStart="@drawable/ic_article"
+                    android:paddingLeft="@dimen/card_button_padding"
+                    android:paddingRight="@dimen/card_button_padding"
+                    android:text="@string/card_button_text" />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
