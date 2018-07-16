@@ -6,5 +6,13 @@
     <string name="activity_title">The Guardian view on&#8230;</string>
 
     <!-- Button text [CHAR MIN=1] [CHAR MAX=16]-->
-    <string name="card_button_text">Read the piece</string>
+    <string-array name="button_text">
+        <item>Read the piece</item>
+        <item>Learn more</item>
+        <item>See what\'s up</item>
+        <item>Our thoughts</item>
+        <item>Here\'s the thing</item>
+        <item>Click for more</item>
+        <item>Where we stand</item>
+    </string-array>
 </resources>
