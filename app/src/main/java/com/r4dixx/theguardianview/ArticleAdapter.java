@@ -37,7 +37,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         CardView cardView = listItemView.findViewById(R.id.cardView);
         TextView cardTitle = listItemView.findViewById(R.id.cardTitle);
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
-        Button button = listItemView.findViewById(R.id.cardButton);
+        Button cardButton = listItemView.findViewById(R.id.cardButton);
 
         if (originalTitle.contains(PREFIX)) {
 
@@ -56,12 +56,14 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             cardTitle.setText(titlePropercase);
             cardDesc.setText(descPropercase);
         } else {
-            cardView.setVisibility(View.GONE);
+            cardTitle.setText(originalTitle);
+            cardDesc.setVisibility(View.GONE);
+            cardTitle.setPadding(0,0,0,40);
         }
 
         String[] arrayOfStrings = getContext().getResources().getStringArray(R.array.button_text);
         String randomString = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
-        button.setText(randomString);
+        cardButton.setText(randomString);
 
         return listItemView;
 

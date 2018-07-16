@@ -29,7 +29,7 @@ public class ArticleActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
 
         final ArrayList<Article> articles = new ArrayList<>();
-        articles.add(new Article("The Guardian view on the Trump-Putin meeting: good for Vladimir, but not for the rest of us", "https://www.theguardian.com/profile/editorial"));
+        articles.add(new Article("Trump-Putin meeting: good for Vladimir, but not for the rest of us", "https://www.theguardian.com/profile/editorial"));
         articles.add(new Article("The Guardian view on home-schooling in England: a register is needed", "https://www.theguardian.com/profile/editorial"));
         articles.add(new Article("The Guardian view on Donald Trump in Britain: this was the visit from hell", "https://www.theguardian.com/profile/editorial"));
         articles.add(new Article("The Guardian view on alien life: what if it’s not there?", "https://www.theguardian.com/profile/editorial"));
