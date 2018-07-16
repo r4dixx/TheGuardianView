@@ -18,6 +18,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Helper methods to request and receive article data from The Guardian.
+ */
 public final class QueryUtils {
 
     public static final String LOG_TAG = QueryUtils.class.getSimpleName();
@@ -25,19 +28,31 @@ public final class QueryUtils {
     private QueryUtils() {
     }
 
+    /**
+     * Return a list of {@link Article} objects that has been built up from
+     * parsing a JSON response.
+     */
     public static List<Article> extractFeatureFromJson(String guardianJSON) {
 
         if (TextUtils.isEmpty(guardianJSON)) {
             return null;
         }
 
+        // Create an empty ArrayList that we can start adding articles to
         List<Article> articles = new ArrayList<>();
 
+        // Try to parse the JSON Response. If there's a problem with the way the JSON
+        // is formatted, a JSONException object will be thrown.
+        // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
+            // Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(guardianJSON);
+            // In the JSONObject Extract the JSONObject associated with the key called "response",
             JSONObject responseObject = baseJsonResponse.getJSONObject("response");
+            // Extract the JSONObject associated with the key called "results",
             JSONArray resultsArray = responseObject.getJSONArray("results");
 
+            // Cycle in the resultsArray and create an Article object for each result
             for (int i = 0; i < resultsArray.length(); i++) {
                 JSONObject currentArticle = resultsArray.getJSONObject(i);
                 JSONObject fields = currentArticle.getJSONObject("fields");
@@ -49,6 +64,8 @@ public final class QueryUtils {
                 articles.add(article);
             }
 
+            // Basically: JSON root → "response" → cycle in the array of "results" → grab "webUrl" and ("fields" → "headline")
+
         } catch (JSONException e) {
             Log.e("QueryUtils", "Problem parsing the Guardian JSON results", e);
         }
@@ -56,6 +73,9 @@ public final class QueryUtils {
         return articles;
     }
 
+    /**
+     * Returns new URL object from the given string URL.
+     */
     private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
@@ -66,6 +86,9 @@ public final class QueryUtils {
         return url;
     }
 
+    /**
+     * Make an HTTP request to the given URL and return a String as the response.
+     */
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -101,6 +124,10 @@ public final class QueryUtils {
         return jsonResponse;
     }
 
+    /**
+     * Convert the {@link InputStream} into a String which contains the
+     * whole JSON response from the server.
+     */
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -115,6 +142,9 @@ public final class QueryUtils {
         return output.toString();
     }
 
+    /**
+     * Query the USGS dataset and return a list of {@link Article} objects.
+     */
     public static List<Article> fetchArticlesData(String requestUrl) {
         URL url = createUrl(requestUrl);
         String jsonResponse = null;

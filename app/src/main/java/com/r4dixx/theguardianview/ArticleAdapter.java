@@ -1,7 +1,6 @@
 package com.r4dixx.theguardianview;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,10 +33,18 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         Article currentArticle = getItem(position);
         String originalTitle = currentArticle.getTitle();
 
-        CardView cardView = listItemView.findViewById(R.id.cardView);
         TextView cardTitle = listItemView.findViewById(R.id.cardTitle);
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
         Button cardButton = listItemView.findViewById(R.id.cardButton);
+
+        // originalTitle = The Guardian view on home-schooling in England: a register is needed
+        // titleSimplified = home-schooling in England
+        // desc = a register is needed
+        // titlePropercase = Home-schooling in England
+        // descPropercase = A register is needed
+        //
+        // If originalTitle doesn't contain "The Guardian view on"
+        // only show it (i.e. hide cardDesc) and add padding below
 
         if (originalTitle.contains(PREFIX)) {
 
@@ -58,9 +65,10 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         } else {
             cardTitle.setText(originalTitle);
             cardDesc.setVisibility(View.GONE);
-            cardTitle.setPadding(0,0,0,40);
+            cardTitle.setPadding(0, 0, 0, 40);
         }
 
+        // Random text in buttons in an array of 4 strings (see strings.xml)
         String[] arrayOfStrings = getContext().getResources().getStringArray(R.array.button_text);
         String randomString = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
         cardButton.setText(randomString);

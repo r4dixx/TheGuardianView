@@ -43,6 +43,7 @@ public class ArticleActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.article_list);
         listView.setAdapter(adapter);
 
+        // TODO: onItemClickListener and OnItemClick on card button instead
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
