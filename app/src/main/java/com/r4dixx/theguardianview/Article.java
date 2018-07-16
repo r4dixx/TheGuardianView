@@ -3,20 +3,18 @@ package com.r4dixx.theguardianview;
 public class Article {
 
     private String mTitle;
-//    private String mUrl;
+    private String mUrl;
 
-    public Article(String title
-//            , String url
-    ) {
+    public Article(String title, String url) {
         mTitle = title;
-//        mUrl = url;
+        mUrl = url;
     }
 
     public String getTitle() {
         return mTitle;
     }
 
-//    public String getUrl() {
-//        return mUrl;
-//    }
+    public String getUrl() {
+        return mUrl;
+    }
 }
