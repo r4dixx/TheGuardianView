@@ -24,7 +24,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     // DO NOT HARDCODE YOUR PRIVATE API KEY HERE
     // Fill it in api_key.xml instead and keep this file private
     //
-    // section=commentisfre
+    // section=commentisfree
     // order-by=newest
     // show-fields=headline
     // show-fields=byline (i.e. author name)
@@ -74,9 +74,9 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Article currentEarthquake = mAdapter.getItem(position);
-                Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+                Article currentArticle = mAdapter.getItem(position);
+                Uri articleUri = Uri.parse(currentArticle.getUrl());
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
                 startActivity(websiteIntent);
             }
         });
@@ -113,7 +113,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     }
 
     @Override
-    public void onLoadFinished(Loader<List<Article>> loader, List<Article> earthquakes) {
+    public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
 
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
@@ -122,8 +122,8 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         SwipeRefreshLayout swipeLayout = findViewById(R.id.swiperefresh);
         swipeLayout.setRefreshing(false);
 
-        if (earthquakes != null && !earthquakes.isEmpty()) {
-            mAdapter.addAll(earthquakes);
+        if (articles != null && !articles.isEmpty()) {
+            mAdapter.addAll(articles);
         }
     }
 
