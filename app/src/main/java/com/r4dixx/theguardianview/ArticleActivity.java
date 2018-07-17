@@ -20,8 +20,21 @@ import java.util.List;
 
 public class ArticleActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
 
-    // TODO: Append API key from api_key.xml (instead of copy-pasting it here)
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?section=commentisfree&order-by=newest&show-fields=headline%2Cbyline&page-size=50&q=%22The%20Guardian%20view%20on%20%22%20AND%20%22%20%7C%20Editorial%22&api-key=";
+    // DO NOT HARDCODE YOUR PRIVATE API KEY HERE
+    // Fill it in api_key.xml instead and keep this file private
+    //
+    // section=commentisfre
+    // order-by=newest
+    // show-fields=headline
+    // show-fields=byline (i.e. author name)
+    // page-size=50 (i.e. number of articles)
+    // Content shows "The Guardian view on " AND " | Editorial"
+    // for api-key cf. api-key.xml
+    //
+    //
+
+    private static final String GUARDIAN_REQUEST_URL =
+            "https://content.guardianapis.com/search?section=commentisfree&order-by=newest&show-fields=headline%2Cbyline&page-size=50&q=%22The%20Guardian%20view%20on%20%22%20AND%20%22%20%7C%20Editorial%22&api-key=";
 
     private TextView mEmptyStateTextView;
 
@@ -86,7 +99,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
-        return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
+        return new ArticleLoader(this, GUARDIAN_REQUEST_URL.concat(getString(R.string.guardian_api_key)));
     }
 
     @Override
