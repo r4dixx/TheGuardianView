@@ -9,13 +9,10 @@
     <dimen name="activity_margins">16dp</dimen>
     <dimen name="toolbar_padding">8dp</dimen>
     <dimen name="card_padding">16dp</dimen>
-    <dimen name="card_title_padding">4dp</dimen>
+    <dimen name="card_date_padding">10dp</dimen>
     <dimen name="card_desc_padding">16dp</dimen>
     <dimen name="card_button_padding">12dp</dimen>
     <dimen name="card_button_drawable_padding">8dp</dimen>
-
-    <!-- Elevation -->
-    <dimen name="card_elevation">8dp</dimen>
 
     <!-- Radius -->
     <dimen name="card_radius">8dp</dimen>
@@ -24,6 +21,7 @@
     <!-- Text sizes -->
     <dimen name="toolbar_title_text_size">24sp</dimen>
     <dimen name="card_title_text_size">20sp</dimen>
+    <dimen name="card_date_text_size">12sp</dimen>
     <dimen name="card_desc_text_size">14sp</dimen>
     <dimen name="empty_state_text_size">20sp</dimen>
 </resources>

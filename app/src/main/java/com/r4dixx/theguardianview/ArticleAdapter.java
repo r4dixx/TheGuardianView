@@ -13,10 +13,13 @@ import java.util.Random;
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
 
-    // Title should be the part after PREFIX and before SEPARATOR
-    // Description the part after SEPARATOR
+    // Title should be the part after PREFIX and before TITLE_SEPARATOR
+    // Description the part after TITLE_SEPARATOR
     private static final String PREFIX = "The Guardian view on ";
-    private static final String SEPARATOR = ": ";
+    private static final String PREFIX_BIS = "The Guardian view of ";
+    private static final String PREFIX_TER = "The Guardian view about ";
+    private static final String TITLE_SEPARATOR = ": ";
+    private static final String TIME_SEPARATOR = "T";
 
     public ArticleAdapter(Context context, ArrayList<Article> articles) {
         super(context, 0, articles);
@@ -32,9 +35,11 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         Article currentArticle = getItem(position);
         String originalTitle = currentArticle.getTitle();
+        String time = currentArticle.getTime();
 
         TextView cardTitle = listItemView.findViewById(R.id.cardTitle);
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
+        TextView cardDate = listItemView.findViewById(R.id.cardDate);
         Button cardButton = listItemView.findViewById(R.id.cardButton);
 
         // originalTitle = The Guardian view on home-schooling in England: a register is needed
@@ -43,14 +48,14 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         // titlePropercase = Home-schooling in England
         // descPropercase = A register is needed
         //
-
         // If anything goes wrong from The Guardian side
         // i.e. article wrongly sorted falling in this category
-        // (or title not following the usual "The Guardian view on" naming convention)
+        // (or title not following the usual PREFIXes naming convention)
         // skip the description and only show original title with no modification
+        // TODO: Find a better way to implement this logic. This is very verbose and not clean
         if (originalTitle.contains(PREFIX)) {
             // Splits the original title into title and description
-            String[] parts = originalTitle.split(SEPARATOR);
+            String[] parts = originalTitle.split(TITLE_SEPARATOR);
             String title = parts[0];
             String desc = parts[1];
 
@@ -63,13 +68,36 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
             cardTitle.setText(titlePropercase);
             cardDesc.setText(descPropercase);
+        } else if (originalTitle.contains(PREFIX_BIS)) {
+            String[] parts = originalTitle.split(TITLE_SEPARATOR);
+            String title = parts[0];
+            String desc = parts[1];
+            String titleSimplified = title.replace(PREFIX_BIS, "");
+            String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
+            String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
+            cardTitle.setText(titlePropercase);
+            cardDesc.setText(descPropercase);
+        } else if (originalTitle.contains(PREFIX_TER)) {
+            String[] parts = originalTitle.split(TITLE_SEPARATOR);
+            String title = parts[0];
+            String desc = parts[1];
+            String titleSimplified = title.replace(PREFIX_TER, "");
+            String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
+            String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
+            cardTitle.setText(titlePropercase);
+            cardDesc.setText(descPropercase);
         } else {
             cardTitle.setText(originalTitle);
             cardDesc.setVisibility(View.GONE);
-            cardTitle.setPadding(0, 0, 0, 40);
+            cardDate.setPadding(0, 0, 0, 40);
         }
 
+        String[] parts = time.split(TIME_SEPARATOR);
+        String date = parts[0];
+        cardDate.setText(date);
+
         // Random text in buttons in an array of 4 strings (see strings.xml)
+        // TODO: Move this piece to hook up buttons with their parent Card (probably a getter to set in Article)
         String[] arrayOfStrings = getContext().getResources().getStringArray(R.array.button_text);
         String randomString = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
         cardButton.setText(randomString);

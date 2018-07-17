@@ -5,11 +5,12 @@
     <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">@color/grey_700</color>
     <color name="colorBackground">@color/colorPrimary</color>
-    <color name="colordIndeterminate">@color/blue_900</color>
+    <color name="colorIndeterminate">@color/blue_900</color>
 
     <!-- Cards -->
     <color name="colorCardBackground">@color/blue_900</color>
     <color name="colorCardTitle">@color/yellow_a400</color>
+    <color name="colorCardDate">@color/white</color>
     <color name="colorCardDesc">@color/white</color>
     <color name="colorCardButtonOutline">@color/yellow_a400</color>
     <color name="colorCardButtonText">@color/yellow_a400</color>

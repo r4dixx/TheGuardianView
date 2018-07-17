@@ -54,7 +54,8 @@ public final class QueryUtils {
 
                 String title = fields.getString("headline");
                 String url = currentArticle.getString("webUrl");
-                Article article = new Article(title, url);
+                String date = currentArticle.getString("webPublicationDate");
+                Article article = new Article(title, url, date);
                 articles.add(article);
             }
 
@@ -137,7 +138,7 @@ public final class QueryUtils {
     }
 
     /**
-     * Query the USGS dataset and return a list of {@link Article} objects.
+     * Query the Guardian dataset and return a list of {@link Article} objects.
      */
     public static List<Article> fetchArticlesData(String requestUrl) {
         URL url = createUrl(requestUrl);
@@ -148,7 +149,6 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        List<Article> articles = extractFeatureFromJson(jsonResponse);
-        return articles;
+        return extractFeatureFromJson(jsonResponse);
     }
 }
