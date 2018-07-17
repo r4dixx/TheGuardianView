@@ -58,10 +58,12 @@ public final class QueryUtils {
                 JSONObject fields = currentArticle.getJSONObject("fields");
 
                 String title = fields.getString("headline");
+                String author = fields.getString("byline");
                 String url = currentArticle.getString("webUrl");
-
-                Article article = new Article(title, url);
-                articles.add(article);
+                if (author.matches("Editorial")) {
+                    Article article = new Article(title, url);
+                    articles.add(article);
+                }
             }
 
             // Basically: JSON root → "response" → cycle in the array of "results" → grab "webUrl" and ("fields" → "headline")

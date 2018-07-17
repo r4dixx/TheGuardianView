@@ -21,7 +21,7 @@ import java.util.List;
 public class ArticleActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
 
     // TODO: Append API key from api_key.xml (instead of copy-pasting it here)
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?order-by=relevance&show-fields=headline%2Cbyline&q=%22The%20Guardian%20view%20on%22%20AND%20%22%20%7C%20Editorial%22&api-key=";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?section=commentisfree&order-by=newest&show-fields=headline%2Cbyline&page-size=50&q=%22The%20Guardian%20view%20on%20%22%20AND%20%22%20%7C%20Editorial%22&api-key=";
 
     private TextView mEmptyStateTextView;
 
