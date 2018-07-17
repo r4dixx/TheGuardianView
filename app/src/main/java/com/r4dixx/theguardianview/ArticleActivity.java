@@ -69,7 +69,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
         listView.setAdapter(mAdapter);
 
-        // TODO: onItemClickListener and OnItemClick on card button instead
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
