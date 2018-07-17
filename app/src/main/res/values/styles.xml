@@ -27,6 +27,8 @@
         <item name="android:orientation">vertical</item>
         <item name="android:scrollbarSize">@dimen/scrollbar_size</item>
         <item name="android:scrollbarThumbVertical">@color/colorCardBackground</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+
     </style>
 
     <!-- CardView theme -->
@@ -60,5 +62,8 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/colorCardButtonText</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+
     </style>
 </resources>
