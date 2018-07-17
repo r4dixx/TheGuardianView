@@ -43,25 +43,31 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         // titlePropercase = Home-schooling in England
         // descPropercase = A register is needed
         //
-        // If originalTitle doesn't contain "The Guardian view on"
-        // only show it (i.e. hide cardDesc) and add padding below
 
+        // If anything goes wrong from The Guardian side
+        // i.e. article wrongly sorted falling in this category
+        // (or title not following the usual "The Guardian view on" naming convention)
+        // skip the description and only show original title with no modification
+        if (originalTitle.contains(PREFIX)) {
+            // Splits the original title into title and description
+            String[] parts = originalTitle.split(SEPARATOR);
+            String title = parts[0];
+            String desc = parts[1];
 
-        // Splits the original title into title and description
-        String[] parts = originalTitle.split(SEPARATOR);
-        String title = parts[0];
-        String desc = parts[1];
+            // Gets rid of the prefix
+            String titleSimplified = title.replace(PREFIX, "");
 
-        // Gets rid of the prefix
-        String titleSimplified = title.replace(PREFIX, "");
+            // Propercase = Capitalize first letter
+            String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
+            String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
 
-        // Propercase = Capitalize first letter
-        String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
-        String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
-
-        cardTitle.setText(titlePropercase);
-        cardDesc.setText(descPropercase);
-
+            cardTitle.setText(titlePropercase);
+            cardDesc.setText(descPropercase);
+        } else {
+            cardTitle.setText(originalTitle);
+            cardDesc.setVisibility(View.GONE);
+            cardTitle.setPadding(0, 0, 0, 40);
+        }
 
         // Random text in buttons in an array of 4 strings (see strings.xml)
         String[] arrayOfStrings = getContext().getResources().getStringArray(R.array.button_text);

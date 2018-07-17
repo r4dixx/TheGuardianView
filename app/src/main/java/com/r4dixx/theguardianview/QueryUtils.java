@@ -1,6 +1,5 @@
 package com.r4dixx.theguardianview;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -34,10 +33,6 @@ public final class QueryUtils {
      */
     public static List<Article> extractFeatureFromJson(String guardianJSON) {
 
-        if (TextUtils.isEmpty(guardianJSON)) {
-            return null;
-        }
-
         // Create an empty ArrayList that we can start adding articles to
         List<Article> articles = new ArrayList<>();
 
@@ -58,12 +53,9 @@ public final class QueryUtils {
                 JSONObject fields = currentArticle.getJSONObject("fields");
 
                 String title = fields.getString("headline");
-                String author = fields.getString("byline");
                 String url = currentArticle.getString("webUrl");
-                if (author.matches("Editorial")) {
-                    Article article = new Article(title, url);
-                    articles.add(article);
-                }
+                Article article = new Article(title, url);
+                articles.add(article);
             }
 
             // Basically: JSON root → "response" → cycle in the array of "results" → grab "webUrl" and ("fields" → "headline")

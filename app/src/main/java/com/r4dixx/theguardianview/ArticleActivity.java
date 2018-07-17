@@ -24,18 +24,15 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     // DO NOT HARDCODE YOUR PRIVATE API KEY HERE
     // Fill it in api_key.xml instead and keep this file private
     //
-    // section=commentisfree
-    // order-by=newest
-    // show-fields=headline
-    // show-fields=byline (i.e. author name)
-    // page-size=50 (i.e. number of articles)
-    // Content shows "The Guardian view on " AND " | Editorial"
-    // for api-key cf. api-key.xml
+    // Request URL fetches all the articles written by the author "Editorial"
+    // Which is the case for every "The Guardian View" articles
     //
+    // Headline shown
+    // 50 results displayed
+    // Ordered by newest
     //
-
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?section=commentisfree&order-by=newest&show-fields=headline%2Cbyline&page-size=50&q=%22The%20Guardian%20view%20on%20%22%20AND%20%22%20%7C%20Editorial%22&api-key=";
+            "https://content.guardianapis.com/profile/editorial?order-by=newest&show-fields=headline&page-size=50&api-key=";
 
     private TextView mEmptyStateTextView;
 
