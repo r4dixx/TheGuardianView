@@ -15,4 +15,8 @@
         <item>Click for more</item>
         <item>Where we stand</item>
     </string-array>
+
+    <!-- Empty and failing text [CHAR MIN=1] -->
+    <string name="no_articles">No articles</string>
+    <string name="no_internet">No internet</string>
 </resources>

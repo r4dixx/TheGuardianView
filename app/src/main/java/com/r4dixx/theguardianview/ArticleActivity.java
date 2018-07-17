@@ -1,28 +1,37 @@
 package com.r4dixx.theguardianview;
 
+import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.Intent;
+import android.content.Loader;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleActivity extends AppCompatActivity {
+public class ArticleActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
 
     // TODO: Append API key from api_key.xml (instead of copy-pasting it here)
     private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?order-by=relevance&show-fields=headline%2Cbyline&q=%22The%20Guardian%20view%20on%22%20AND%20%22%20%7C%20Editorial%22&api-key=";
+
+    private TextView mEmptyStateTextView;
+
+    private static final int ARTICLE_LOADER_ID = 0;
 
     private ArticleAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         // Sets the toolbar as the app bar for the activity and hides title to allow custom text
@@ -38,12 +47,14 @@ public class ArticleActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.article_list);
 
+        // Hook up the TextView as the empty view of the ListView
+        mEmptyStateTextView = findViewById(R.id.empty_view);
+        listView.setEmptyView(mEmptyStateTextView);
+
         // This is where we ask the adapter to go fetch the ArrayList in QueryUtils
+        // ↑ TBC NOT SURE ABOUT THIS ↑
         mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
         listView.setAdapter(mAdapter);
-
-        ArticleAsyncTask task = new ArticleAsyncTask();
-        task.execute(GUARDIAN_REQUEST_URL);
 
         // TODO: onItemClickListener and OnItemClick on card button instead
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,31 +66,44 @@ public class ArticleActivity extends AppCompatActivity {
                 startActivity(websiteIntent);
             }
         });
+
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+            LoaderManager loaderManager = getLoaderManager();
+            loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
+        } else {
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.GONE);
+            mEmptyStateTextView.setText(R.string.no_internet);
+        }
+
     }
 
-    /**
-     * {@link AsyncTask} to perform the network request on a background thread, and then
-     * update the UI with the list of articles in the response.
-     */
-    private class ArticleAsyncTask extends AsyncTask<String, Void, List<Article>> {
+    @Override
+    public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
+        return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
+    }
 
-        @Override
-        protected List<Article> doInBackground(String... urls) {
-            if (urls.length < 1 || urls[0] == null) {
-                return null;
-            }
-            List<Article> result = QueryUtils.fetchArticlesData(urls[0]);
-            return result;
+    @Override
+    public void onLoadFinished(Loader<List<Article>> loader, List<Article> earthquakes) {
+
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
+        mEmptyStateTextView.setText(R.string.no_articles);
+        mAdapter.clear();
+
+        if (earthquakes != null && !earthquakes.isEmpty()) {
+            mAdapter.addAll(earthquakes);
         }
+    }
 
-        @Override
-        protected void onPostExecute(List<Article> data) {
-
-            mAdapter.clear();
-
-            if (data != null && !data.isEmpty()) {
-                mAdapter.addAll(data);
-            }
-        }
+    @Override
+    public void onLoaderReset(Loader<List<Article>> loader) {
+        mAdapter.clear();
     }
 }
