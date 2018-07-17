@@ -9,6 +9,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:indeterminateTint">@color/blue_900</item>
     </style>
 
     <!-- Toolbar theme -->
@@ -66,4 +67,11 @@
         <item name="android:focusable">false</item>
 
     </style>
+
+    <!-- Empty/Failed state text theme -->
+    <style name="EmptyStateTextTheme" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/empty_state_text_size</item>
+    </style>
+
 </resources>

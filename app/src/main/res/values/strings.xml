@@ -17,6 +17,6 @@
     </string-array>
 
     <!-- Empty and failing text [CHAR MIN=1] -->
-    <string name="no_articles">No articles</string>
-    <string name="no_internet">No internet</string>
+    <string name="no_articles">Oops, no articles found.\nPlease come back later.</string>
+    <string name="no_internet">Oops, no internet.\nPlease check your network connection.</string>
 </resources>
