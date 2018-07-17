@@ -18,15 +18,20 @@
             android:gravity="center_vertical"
             android:text="@string/activity_title" />
     </android.support.v7.widget.Toolbar>
-
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ListView
-        android:id="@+id/article_list"
+        android:id="@+id/list"
         style="@style/ListViewTheme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/activity_margins" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <!-- Only visible when the list has no items. -->
     <TextView
