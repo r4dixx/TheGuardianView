@@ -35,6 +35,7 @@
     <!-- CardView theme -->
     <style name="CardTheme" parent="CardView">
         <item name="cardBackgroundColor">@color/colorCardBackground</item>
+        <item name="android:foreground">?android:selectableItemBackground</item>
         <item name="cardCornerRadius">@dimen/card_radius</item>
     </style>
 
@@ -70,7 +71,7 @@
     <style name="CardButtonTheme" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/colorCardButtonText</item>
-        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:background">@color/transparent</item>
         <item name="android:clickable">false</item>
         <item name="android:focusable">false</item>
     </style>
