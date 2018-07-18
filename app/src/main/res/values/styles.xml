@@ -9,13 +9,13 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
-        <item name="android:indeterminateTint">@color/blue_900</item>
+        <item name="android:indeterminateTint">@color/colorIndeterminate</item>
     </style>
 
     <!-- Toolbar theme -->
     <style name="ToolbarTextTheme" parent="Base.TextAppearance.AppCompat">
         <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorActivityTitle</item>
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -27,7 +27,7 @@
         <item name="android:fadeScrollbars">false</item>
         <item name="android:orientation">vertical</item>
         <item name="android:scrollbarSize">@dimen/scrollbar_size</item>
-        <item name="android:scrollbarThumbVertical">@color/colorCardBackground</item>
+        <item name="android:scrollbarThumbVertical">@color/colorScrollBarThumb</item>
         <item name="android:listSelector">@android:color/transparent</item>
 
     </style>

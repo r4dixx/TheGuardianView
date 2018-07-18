@@ -3,9 +3,9 @@
     <string name="app_name">The Guardian view</string>
 
     <!-- Activity title [CHAR MIN=1]-->
-    <string name="activity_title">The Guardian view on&#8230;</string>
+    <string name="activity_main_title">The Guardian view on&#8230;</string>
 
-    <!-- Button text [CHAR MIN=1] [CHAR MAX=16]-->
+    <!-- Button texts [CHAR MIN=1] [CHAR MAX=16]-->
     <string-array name="button_text">
         <item>Read the piece</item>
         <item>Learn more</item>
@@ -15,6 +15,10 @@
         <item>Click for more</item>
         <item>Where we stand</item>
     </string-array>
+
+    <!-- Settings menu [CHAR MIN=1] [CHAR MAX=16]-->
+    <string name="settings_menu_item_text">Settings</string>
+    <string name="activity_settings_title">Settings</string>
 
     <!-- Empty and failing text [CHAR MIN=1] -->
     <string name="no_articles">Oops, no articles found.\nPlease come back later.</string>
