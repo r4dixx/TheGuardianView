@@ -22,7 +22,7 @@ import java.util.List;
  */
 public final class QueryUtils {
 
-    public static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     private QueryUtils() {
     }
@@ -31,7 +31,7 @@ public final class QueryUtils {
      * Return a list of {@link Article} objects that has been built up from
      * parsing a JSON response.
      */
-    public static List<Article> extractFeatureFromJson(String guardianJSON) {
+    private static List<Article> extractFeatureFromJson(String guardianJSON) {
 
         // Create an empty ArrayList that we can start adding articles to
         List<Article> articles = new ArrayList<>();
