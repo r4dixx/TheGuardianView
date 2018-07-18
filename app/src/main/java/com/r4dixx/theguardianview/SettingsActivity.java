@@ -20,6 +20,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public static class ArticlePreferenceFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.settings);
+        }
 
     }
 }

@@ -2,6 +2,7 @@
     <!-- App name [CHAR MIN=1]-->
     <string name="app_name">The Guardian view</string>
 
+    <!-- Main -->
     <!-- Activity title [CHAR MIN=1]-->
     <string name="activity_main_title">The Guardian view on&#8230;</string>
 
@@ -16,11 +17,17 @@
         <item>Where we stand</item>
     </string-array>
 
+    <!-- Empty and failing text [CHAR MIN=1] -->
+    <string name="no_articles">Oops, no articles found.\nIs your API key correct?</string>
+    <string name="no_internet">Oops, no internet.\nPlease check your network connection.</string>
+
+    <!-- Settings -->
     <!-- Settings menu [CHAR MIN=1] [CHAR MAX=16]-->
     <string name="settings_menu_item_text">Settings</string>
-    <string name="activity_settings_title">Settings</string>
+    <string name="activity_settings_title">@string/settings_menu_item_text</string>
 
-    <!-- Empty and failing text [CHAR MIN=1] -->
-    <string name="no_articles">Oops, no articles found.\nPlease come back later.</string>
-    <string name="no_internet">Oops, no internet.\nPlease check your network connection.</string>
+    <!-- Preference Strings -->
+    <string name="settings_api_key_label">API key</string>
+    <string name="settings_api_key" translatable="false">api-key</string>
+    <string name="settings_api_key_default" translatable="false">test</string>
 </resources>

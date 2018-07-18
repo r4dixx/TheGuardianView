@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/activity_settings_title">
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_api_key_default"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:key="@string/settings_api_key"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_api_key_label" />
+
+</PreferenceScreen>

@@ -5,10 +5,12 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -22,19 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
-
-    // DO NOT HARDCODE YOUR PRIVATE API KEY HERE
-    // Fill it in api_key.xml instead and keep this file private
-    //
-    // Request URL fetches all the articles written by the author "Editorial"
-    // Which is the case for every "The Guardian View" articles
-    //
-    // Headline shown
-    // 50 results displayed
-    // Ordered by newest
-    //
-    private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/profile/editorial?order-by=newest&show-fields=headline&page-size=50&api-key=";
 
     private TextView mEmptyStateTextView;
 
@@ -108,7 +97,28 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
-        return new ArticleLoader(this, GUARDIAN_REQUEST_URL.concat(getString(R.string.guardian_api_key)));
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String apiKey = sharedPrefs.getString(
+                getString(R.string.settings_api_key),
+                getString(R.string.settings_api_key_default));
+
+        // Builds the complete uri `https://content.guardianapis.com/profile/editorial?order-by=newest&show-fields=headline&page-size=50'
+        // and adds the user personal API key (which he can now copy-paste)
+        Uri.Builder uriBuilder = new Uri.Builder();
+        uriBuilder.scheme("https")
+                .authority("content.guardianapis.com")
+                .appendPath("profile")
+                .appendPath("editorial")
+                .appendQueryParameter("order-by", "newest")
+                .appendQueryParameter("show-fields", "headline")
+                .appendQueryParameter("page-size", "50")
+                .appendQueryParameter("api-key", apiKey);
+
+        final String guardianRequestURL = uriBuilder.build().toString();
+
+        return new ArticleLoader(this, guardianRequestURL);
     }
 
     @Override
