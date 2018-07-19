@@ -118,6 +118,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
                 .authority("content.guardianapis.com")
                 .appendPath("profile")
                 .appendPath("editorial")
+                .appendQueryParameter("section", "commentisfree")
                 .appendQueryParameter("order-by", orderBy)
                 .appendQueryParameter("show-fields", "headline")
                 .appendQueryParameter("page-size", "50")
