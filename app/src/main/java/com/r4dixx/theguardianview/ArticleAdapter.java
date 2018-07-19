@@ -21,6 +21,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     private static final String TITLE_SEPARATOR = ": ";
     private static final String TIME_SEPARATOR = "T";
 
+    private static final int FALLBACK_PADDING = 40;
+
     public ArticleAdapter(Context context, ArrayList<Article> articles) {
         super(context, 0, articles);
     }
@@ -89,7 +91,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         } else {
             cardTitle.setText(originalTitle);
             cardDesc.setVisibility(View.GONE);
-            cardDate.setPadding(0, 0, 0, 40);
+            cardDate.setPadding(0, 0, 0, FALLBACK_PADDING);
         }
 
         String[] parts = time.split(TIME_SEPARATOR);
