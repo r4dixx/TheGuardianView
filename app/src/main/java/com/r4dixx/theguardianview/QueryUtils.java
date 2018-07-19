@@ -27,6 +27,9 @@ public final class QueryUtils {
     private QueryUtils() {
     }
 
+    private static final int MAX_READ_TIMEOUT = 10000;
+    private static final int MAX_CONNECTION_TIMEOUT = 15000;
+
     /**
      * Return a list of {@link Article} objects that has been built up from
      * parsing a JSON response.
@@ -52,9 +55,9 @@ public final class QueryUtils {
                 JSONObject currentArticle = resultsArray.getJSONObject(i);
                 JSONObject fields = currentArticle.getJSONObject("fields");
 
-                String title = fields.getString("headline");
-                String url = currentArticle.getString("webUrl");
-                String date = currentArticle.getString("webPublicationDate");
+                String title = fields.optString("headline");
+                String url = currentArticle.optString("webUrl");
+                String date = currentArticle.optString("webPublicationDate");
                 Article article = new Article(title, url, date);
                 articles.add(article);
             }
@@ -95,8 +98,8 @@ public final class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
+            urlConnection.setReadTimeout(MAX_READ_TIMEOUT);
+            urlConnection.setConnectTimeout(MAX_CONNECTION_TIMEOUT);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
