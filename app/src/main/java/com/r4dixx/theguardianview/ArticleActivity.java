@@ -95,6 +95,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
     }
 
+
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
 
@@ -102,7 +103,13 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
         String apiKey = sharedPrefs.getString(
                 getString(R.string.settings_api_key),
-                getString(R.string.settings_api_key_default));
+                getString(R.string.settings_api_key_default)
+        );
+
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
 
         // Builds the complete uri `https://content.guardianapis.com/profile/editorial?order-by=newest&show-fields=headline&page-size=50'
         // and adds the user personal API key (which he can now copy-paste)
@@ -111,7 +118,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
                 .authority("content.guardianapis.com")
                 .appendPath("profile")
                 .appendPath("editorial")
-                .appendQueryParameter("order-by", "newest")
+                .appendQueryParameter("order-by", orderBy)
                 .appendQueryParameter("show-fields", "headline")
                 .appendQueryParameter("page-size", "50")
                 .appendQueryParameter("api-key", apiKey);

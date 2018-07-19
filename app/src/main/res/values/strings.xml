@@ -5,7 +5,6 @@
     <!-- Main -->
     <!-- Activity title [CHAR MIN=1]-->
     <string name="activity_main_title">The Guardian view on&#8230;</string>
-
     <!-- Button texts [CHAR MIN=1] [CHAR MAX=16]-->
     <string-array name="button_text">
         <item>Read the piece</item>
@@ -16,18 +15,37 @@
         <item>Click for more</item>
         <item>Where we stand</item>
     </string-array>
-
     <!-- Empty and failing text [CHAR MIN=1] -->
     <string name="no_articles">Oops, no articles found.\nIs your API key correct?</string>
     <string name="no_internet">Oops, no internet.\nPlease check your network connection.</string>
 
     <!-- Settings -->
+    <!-- Activity title [CHAR MIN=1]-->
+    <string name="activity_settings_title">Settings</string>
     <!-- Settings menu [CHAR MIN=1] [CHAR MAX=16]-->
-    <string name="settings_menu_item_text">Settings</string>
-    <string name="activity_settings_title">@string/settings_menu_item_text</string>
-
-    <!-- Preference Strings -->
+    <string name="settings_menu_item_text">@string/activity_settings_title</string>
+    <!-- Preference Strings for API key -->
     <string name="settings_api_key_label">API key</string>
     <string name="settings_api_key" translatable="false">api-key</string>
     <string name="settings_api_key_default" translatable="false">test</string>
+    <!-- Preference Strings for order by -->
+    <string name="settings_order_by_label">Sort results by</string>
+    <string name="settings_order_by_key" translatable="false">order-by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_newest_value</string>
+    <!-- Preference Strings for order-by "newest" -->
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+    <!-- Preference Strings for order-by "oldest" -->
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+    <!-- Preference Strings sorted in String array -->
+    <string-array name="settings_order_by_labels">
+        <item>@string/settings_order_by_newest_label</item>
+        <item>@string/settings_order_by_oldest_label</item>
+    </string-array>
+    <string-array name="settings_order_by_values">
+        <item>@string/settings_order_by_newest_value</item>
+        <item>@string/settings_order_by_oldest_value</item>
+    </string-array>
+
 </resources>

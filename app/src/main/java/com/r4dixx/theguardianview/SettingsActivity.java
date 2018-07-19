@@ -2,6 +2,7 @@ package com.r4dixx.theguardianview;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -31,12 +32,24 @@ public class SettingsActivity extends AppCompatActivity {
             addPreferencesFromResource(R.xml.settings);
             Preference apiKey = findPreference(getString(R.string.settings_api_key));
             bindToValue(apiKey);
+            Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
+            bindToValue(orderBy);
         }
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-            preference.setSummary(stringValue);
+            String strValue = value.toString();
+            preference.setSummary(strValue);
+            if (preference instanceof ListPreference) {
+                ListPreference listPref = (ListPreference) preference;
+                int index = listPref.findIndexOfValue(strValue);
+                if (index >= 0) {
+                    CharSequence[] labels = listPref.getEntries();
+                    preference.setSummary(labels[index]);
+                }
+            } else {
+                preference.setSummary(strValue);
+            }
             return true;
         }
 
