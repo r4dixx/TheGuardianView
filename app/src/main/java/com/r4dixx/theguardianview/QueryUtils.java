@@ -58,7 +58,8 @@ public final class QueryUtils {
                 String title = fields.optString("headline");
                 String url = currentArticle.optString("webUrl");
                 String date = currentArticle.optString("webPublicationDate");
-                Article article = new Article(title, url, date);
+                String sectionName = currentArticle.optString("sectionName");
+                Article article = new Article(title, url, date, sectionName);
                 articles.add(article);
             }
 

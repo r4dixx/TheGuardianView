@@ -15,6 +15,7 @@
     <color name="colorCardTitle">@color/yellow_a400</color>
     <color name="colorCardDate">@color/white</color>
     <color name="colorCardDesc">@color/white</color>
+    <color name="colorCardSectionName">@color/white</color>
     <color name="colorCardButtonOutline">@color/yellow_a400</color>
     <color name="colorCardButtonText">@color/yellow_a400</color>
 

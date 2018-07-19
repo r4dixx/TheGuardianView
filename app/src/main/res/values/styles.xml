@@ -67,6 +67,17 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <!-- CardView Section Name theme -->
+    <style name="CardSectionNameTheme" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/colorCardSectionName</item>
+        <item name="android:textSize">@dimen/card_section_text_size</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+
     <!-- CardView Button theme -->
     <style name="CardButtonTheme" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:fontFamily">sans-serif</item>

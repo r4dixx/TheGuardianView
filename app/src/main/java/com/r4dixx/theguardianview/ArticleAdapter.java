@@ -20,6 +20,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     private static final String PREFIX_TER = "The Guardian view about ";
     private static final String TITLE_SEPARATOR = ": ";
     private static final String TIME_SEPARATOR = "T";
+    private static final String SECTION_APPENDIX = " - ";
+    private static final int FALLBACK_PADDING = 40;
 
     public ArticleAdapter(Context context, ArrayList<Article> articles) {
         super(context, 0, articles);
@@ -36,9 +38,11 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         Article currentArticle = getItem(position);
         String originalTitle = currentArticle.getTitle();
         String time = currentArticle.getTime();
+        String sectionName = currentArticle.getSectionName();
 
         TextView cardTitle = listItemView.findViewById(R.id.cardTitle);
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
+        TextView cardSectionName = listItemView.findViewById(R.id.cardSectionName);
         TextView cardDate = listItemView.findViewById(R.id.cardDate);
         Button cardButton = listItemView.findViewById(R.id.cardButton);
 
@@ -63,11 +67,13 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             String titleSimplified = title.replace(PREFIX, "");
 
             // Propercase = Capitalize first letter
+            // Proper format means a text separator is appended
             String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
             String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
-
+            String sectionProperFormat = sectionName.concat(SECTION_APPENDIX);
             cardTitle.setText(titlePropercase);
             cardDesc.setText(descPropercase);
+            cardSectionName.setText(sectionProperFormat);
         } else if (originalTitle.contains(PREFIX_BIS)) {
             String[] parts = originalTitle.split(TITLE_SEPARATOR);
             String title = parts[0];
@@ -75,8 +81,10 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             String titleSimplified = title.replace(PREFIX_BIS, "");
             String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
             String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
+            String sectionProperFormat = sectionName.concat(SECTION_APPENDIX);
             cardTitle.setText(titlePropercase);
             cardDesc.setText(descPropercase);
+            cardSectionName.setText(sectionProperFormat);
         } else if (originalTitle.contains(PREFIX_TER)) {
             String[] parts = originalTitle.split(TITLE_SEPARATOR);
             String title = parts[0];
@@ -84,12 +92,16 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             String titleSimplified = title.replace(PREFIX_TER, "");
             String titlePropercase = titleSimplified.substring(0, 1).toUpperCase() + titleSimplified.substring(1);
             String descPropercase = desc.substring(0, 1).toUpperCase() + desc.substring(1);
+            String sectionProperFormat = sectionName.concat(SECTION_APPENDIX);
             cardTitle.setText(titlePropercase);
             cardDesc.setText(descPropercase);
+            cardSectionName.setText(sectionProperFormat);
         } else {
             cardTitle.setText(originalTitle);
             cardDesc.setVisibility(View.GONE);
-            cardDate.setPadding(0, 0, 0, 40);
+            cardDate.setPadding(0, 0, 0, FALLBACK_PADDING);
+            cardSectionName.setText(sectionName);
+            cardSectionName.setPadding(0, 0, 0, FALLBACK_PADDING);
         }
 
         String[] parts = time.split(TIME_SEPARATOR);
