@@ -25,6 +25,7 @@
                 style="@style/CardTitleTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/card_title_padding"
                 tools:text="Alien life" />
 
             <TextView

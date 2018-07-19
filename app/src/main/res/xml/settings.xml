@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:dividerHeight="0dp"
     android:title="@string/activity_settings_title">
 
     <ListPreference
+        android:id="@+id/order_by"
         android:defaultValue="@string/settings_order_by_default"
         android:entries="@array/settings_order_by_labels"
         android:entryValues="@array/settings_order_by_values"
+        android:icon="@drawable/ic_sort"
         android:key="@string/settings_order_by_key"
         android:title="@string/settings_order_by_label" />
 
     <EditTextPreference
+        android:id="@+id/api_key"
         android:defaultValue="@string/settings_api_key_default"
+        android:dialogIcon="@drawable/ic_sort"
+        android:icon="@drawable/ic_key"
         android:inputType="textMultiLine|textNoSuggestions"
         android:key="@string/settings_api_key"
         android:selectAllOnFocus="true"

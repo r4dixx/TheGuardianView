@@ -3,7 +3,7 @@
     <!-- App -->
     <color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">@color/colorPrimary</color>
-    <color name="colorAccent">@color/grey_700</color>
+    <color name="colorAccent">@color/blue_900</color>
     <color name="colorBackground">@color/colorPrimary</color>
     <color name="colorScrollBarThumb">@color/blue_900</color>
 

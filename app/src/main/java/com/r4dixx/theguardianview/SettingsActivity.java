@@ -21,6 +21,14 @@ public class SettingsActivity extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
         decorView.setSystemUiVisibility(uiOptions);
+
+        // Sets the toolbar as the app bar for the activity and hides title to allow custom text
+        android.support.v7.widget.Toolbar toolBar = findViewById(R.id.toolbar_settings);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        // Shows back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
 

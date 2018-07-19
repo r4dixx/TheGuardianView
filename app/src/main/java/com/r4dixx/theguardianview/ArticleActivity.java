@@ -40,7 +40,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         SwipeRefreshLayout swipeLayout = findViewById(R.id.swiperefresh);
 
         // Sets the toolbar as the app bar for the activity and hides title to allow custom text
-        android.support.v7.widget.Toolbar toolBar = findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolBar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 

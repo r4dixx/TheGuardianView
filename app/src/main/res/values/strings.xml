@@ -21,7 +21,7 @@
 
     <!-- Settings -->
     <!-- Activity title [CHAR MIN=1]-->
-    <string name="activity_settings_title">Settings</string>
+    <string name="activity_settings_title">Query settings</string>
     <!-- Settings menu [CHAR MIN=1] [CHAR MAX=16]-->
     <string name="settings_menu_item_text">@string/activity_settings_title</string>
     <!-- Preference Strings for API key -->
