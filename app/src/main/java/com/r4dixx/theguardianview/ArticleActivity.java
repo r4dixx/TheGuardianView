@@ -81,14 +81,14 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.GONE);
             mEmptyStateTextView.setText(R.string.no_internet);
-            swipeLayout.setRefreshing(false);
+            loaderManager.restartLoader(ARTICLE_LOADER_ID, null, this);
         }
 
         swipeLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        loaderManager.initLoader(ARTICLE_LOADER_ID, null, ArticleActivity.this);
+                        loaderManager.restartLoader(ARTICLE_LOADER_ID, null, ArticleActivity.this);
                     }
                 }
         );
