@@ -31,6 +31,8 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
     private ArticleAdapter mAdapter;
 
+    final LoaderManager loaderManager = getLoaderManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +74,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
-        final LoaderManager loaderManager = getLoaderManager();
 
         if (networkInfo != null && networkInfo.isConnected()) {
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
@@ -163,5 +163,11 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loaderManager.restartLoader(ARTICLE_LOADER_ID, null, this);
     }
 }
