@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -111,7 +112,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
                 getString(R.string.settings_order_by_default)
         );
 
-        // Builds the complete uri `https://content.guardianapis.com/profile/editorial?order-by=newest&show-fields=headline&page-size=50'
+        // Builds the complete uri `https://content.guardianapis.com/profile/editorial?order-by=newest&show-fields=headline%2Cthumbnail&page-size=50'
         // and adds the user personal API key (which he can now copy-paste)
         Uri.Builder uriBuilder = new Uri.Builder();
         uriBuilder.scheme("https")
@@ -120,12 +121,11 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
                 .appendPath("editorial")
                 .appendQueryParameter("section", "commentisfree")
                 .appendQueryParameter("order-by", orderBy)
-                .appendQueryParameter("show-fields", "headline")
+                .appendQueryParameter("show-fields", "headline" + "," + "thumbnail")
                 .appendQueryParameter("page-size", "50")
                 .appendQueryParameter("api-key", apiKey);
 
         final String guardianRequestURL = uriBuilder.build().toString();
-
         return new ArticleLoader(this, guardianRequestURL);
     }
 

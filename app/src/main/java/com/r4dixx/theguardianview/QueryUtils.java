@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -58,7 +59,8 @@ public final class QueryUtils {
                 String title = fields.optString("headline");
                 String url = currentArticle.optString("webUrl");
                 String date = currentArticle.optString("webPublicationDate");
-                Article article = new Article(title, url, date);
+                String thumbnailUrl = fields.optString("thumbnail");
+                Article article = new Article(title, url, date, thumbnailUrl);
                 articles.add(article);
             }
 

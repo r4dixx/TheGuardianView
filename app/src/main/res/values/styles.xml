@@ -35,7 +35,6 @@
     <!-- CardView theme -->
     <style name="CardTheme" parent="CardView">
         <item name="cardBackgroundColor">@color/colorCardBackground</item>
-        <item name="android:foreground">?android:selectableItemBackground</item>
         <item name="cardCornerRadius">@dimen/card_radius</item>
     </style>
 

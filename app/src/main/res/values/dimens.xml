@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Dimensions -->
+    <dimen name="card_thumbnail_size">75dp</dimen>
     <dimen name="card_button_height">36dp</dimen>
     <dimen name="card_button_outline">1dp</dimen>
     <dimen name="scrollbar_width">2dp</dimen>
@@ -10,6 +11,7 @@
     <dimen name="toolbar_padding_bottom">8dp</dimen>
     <dimen name="toolbar_padding_sides">6dp</dimen>
     <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_thumbnail_margin">16dp</dimen>
     <dimen name="card_title_padding">2dp</dimen>
     <dimen name="card_date_padding">10dp</dimen>
     <dimen name="card_desc_padding">16dp</dimen>

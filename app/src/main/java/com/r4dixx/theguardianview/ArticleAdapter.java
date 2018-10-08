@@ -1,12 +1,16 @@
 package com.r4dixx.theguardianview;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,8 +24,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     private static final String PREFIX_TER = "The Guardian view about ";
     private static final String TITLE_SEPARATOR = ": ";
     private static final String TIME_SEPARATOR = "T";
-
-    private static final int FALLBACK_PADDING = 40;
 
     public ArticleAdapter(Context context, ArrayList<Article> articles) {
         super(context, 0, articles);
@@ -38,11 +40,13 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         Article currentArticle = getItem(position);
         String originalTitle = currentArticle.getTitle();
         String time = currentArticle.getTime();
+        String thumbnailUrl = currentArticle.getThumbnailUrl();
 
         TextView cardTitle = listItemView.findViewById(R.id.cardTitle);
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
         TextView cardDate = listItemView.findViewById(R.id.cardDate);
         Button cardButton = listItemView.findViewById(R.id.cardButton);
+        TextView cardUrl = listItemView.findViewById(R.id.thumbnailUrl);
 
         // originalTitle = The Guardian view on home-schooling in England: a register is needed
         // titleSimplified = home-schooling in England
@@ -91,7 +95,14 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         } else {
             cardTitle.setText(originalTitle);
             cardDesc.setVisibility(View.GONE);
-            cardDate.setPadding(0, 0, 0, FALLBACK_PADDING);
+        }
+
+        if ((thumbnailUrl.equals("") || thumbnailUrl.equals("null") || thumbnailUrl.isEmpty())) {
+            cardUrl.setVisibility(View.GONE);
+            CardView cardUrlContainer = listItemView.findViewById(R.id.thumbnail_container);
+            cardUrlContainer.setVisibility(View.GONE);
+        } else {
+            cardUrl.setText(thumbnailUrl);
         }
 
         String[] parts = time.split(TIME_SEPARATOR);

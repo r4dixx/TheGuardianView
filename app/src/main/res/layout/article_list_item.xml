@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/activity_margins"
         android:layout_marginRight="@dimen/activity_margins"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         app:contentPadding="@dimen/card_padding">
 
         <LinearLayout
@@ -20,29 +21,62 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/cardTitle"
-                style="@style/CardTitleTheme"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/card_title_padding"
-                tools:text="Alien life" />
+                android:paddingBottom="@dimen/card_desc_padding">
 
-            <TextView
-                android:id="@+id/cardDate"
-                style="@style/CardDateTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/card_date_padding"
-                tools:text="2018-07-17" />
+                <android.support.v7.widget.CardView
+                    android:id="@+id/thumbnail_container"
+                    style="@style/CardTheme"
+                    android:layout_width="@dimen/card_thumbnail_size"
+                    android:layout_height="@dimen/card_thumbnail_size"
+                    android:layout_marginEnd="@dimen/card_thumbnail_margin"
+                    android:clickable="false"
+                    android:focusable="false">
 
-            <TextView
-                android:id="@+id/cardDesc"
-                style="@style/CardDescTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/card_desc_padding"
-                tools:text="What if it’s not there?" />
+                    <TextView
+                        android:id="@+id/thumbnailUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:text="url" />
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/thumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--tools:src="@drawable/ic_launcher_background" />-->
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/cardTitle"
+                    style="@style/CardTitleTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/thumbnail_container"
+                    android:paddingBottom="@dimen/card_title_padding"
+                    tools:text="Alien life" />
+
+                <TextView
+                    android:id="@+id/cardDate"
+                    style="@style/CardDateTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardTitle"
+                    android:layout_toEndOf="@id/thumbnail_container"
+                    tools:text="2018-07-17" />
+
+                <TextView
+                    android:id="@+id/cardDesc"
+                    style="@style/CardDescTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardDate"
+                    android:layout_toEndOf="@id/thumbnail_container"
+                    android:paddingTop="@dimen/card_date_padding"
+                    tools:text="What if it’s not there?" />
+            </RelativeLayout>
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -54,8 +88,8 @@
                     style="@style/CardButtonTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/card_button_height"
-                    android:drawablePadding="@dimen/card_button_drawable_padding"
                     android:drawableStart="@drawable/ic_article"
+                    android:drawablePadding="@dimen/card_button_drawable_padding"
                     android:paddingLeft="@dimen/card_button_padding"
                     android:paddingRight="@dimen/card_button_padding"
                     tools:text="Read the piece" />
