@@ -109,6 +109,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             Picasso.get()
                     .load(thumbnailUrl)
                     .placeholder(R.color.colorThumbnailPlaceholder)
+                    .error(R.drawable.ic_broken_image)
                     .into(cardThumbnail);
         }
 
