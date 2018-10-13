@@ -1,6 +1,7 @@
 package com.r4dixx.theguardianview;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -8,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -46,7 +50,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
         TextView cardDate = listItemView.findViewById(R.id.cardDate);
         Button cardButton = listItemView.findViewById(R.id.cardButton);
-        TextView cardUrl = listItemView.findViewById(R.id.thumbnailUrl);
+        ImageView cardThumbnail = listItemView.findViewById(R.id.thumbnail);
 
         // originalTitle = The Guardian view on home-schooling in England: a register is needed
         // titleSimplified = home-schooling in England
@@ -98,11 +102,11 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         }
 
         if ((thumbnailUrl.equals("") || thumbnailUrl.equals("null") || thumbnailUrl.isEmpty())) {
-            cardUrl.setVisibility(View.GONE);
+            cardThumbnail.setVisibility(View.GONE);
             CardView cardUrlContainer = listItemView.findViewById(R.id.thumbnail_container);
             cardUrlContainer.setVisibility(View.GONE);
         } else {
-            cardUrl.setText(thumbnailUrl);
+            Picasso.get().load(thumbnailUrl).into(cardThumbnail);
         }
 
         String[] parts = time.split(TIME_SEPARATOR);
