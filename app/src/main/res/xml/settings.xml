@@ -6,6 +6,7 @@
     <ListPreference
         android:id="@+id/order_by"
         android:defaultValue="@string/settings_order_by_default"
+        android:dialogIcon="@drawable/ic_sort"
         android:entries="@array/settings_order_by_labels"
         android:entryValues="@array/settings_order_by_values"
         android:icon="@drawable/ic_sort"
@@ -15,7 +16,7 @@
     <EditTextPreference
         android:id="@+id/api_key"
         android:defaultValue="@string/settings_api_key_default"
-        android:dialogIcon="@drawable/ic_sort"
+        android:dialogIcon="@drawable/ic_key"
         android:icon="@drawable/ic_key"
         android:inputType="textMultiLine|textNoSuggestions"
         android:key="@string/settings_api_key"
