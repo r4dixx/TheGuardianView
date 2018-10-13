@@ -20,5 +20,6 @@
 
     <!-- Progress -->
     <color name="colorIndeterminate">@color/blue_900</color>
+    <color name="colorThumbnailPlaceholder">@color/grey_700</color>
 
 </resources>

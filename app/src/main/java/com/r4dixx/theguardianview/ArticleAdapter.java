@@ -106,7 +106,10 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             CardView cardUrlContainer = listItemView.findViewById(R.id.thumbnail_container);
             cardUrlContainer.setVisibility(View.GONE);
         } else {
-            Picasso.get().load(thumbnailUrl).into(cardThumbnail);
+            Picasso.get()
+                    .load(thumbnailUrl)
+                    .placeholder(R.color.colorThumbnailPlaceholder)
+                    .into(cardThumbnail);
         }
 
         String[] parts = time.split(TIME_SEPARATOR);
