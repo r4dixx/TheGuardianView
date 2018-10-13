@@ -73,6 +73,7 @@ Open to translations, code improvements, feature suggestions... Any contribution
 
 - Author: <a href="https://twitter.com/r4dixx" target="_blank">Amaël Sikel</a>
 - All content including icon, text, links and color palette is from <a href="https://www.theguardian.com" target="_blank">The Guardian</a>
+- <a href="http://square.github.io/picasso/" target="_blank">Picasso</a>, a powerful image downloading and caching library for Android
 - <a href="https://gitmoji.carloscuesta.me/" target="_blank">Gitmoji</a>, an emoji guide for your commit messages by <a href="https://github.com/carloscuesta" target="_blank">carloscuesta</a>
 
 <h2>Copyright</h2>
