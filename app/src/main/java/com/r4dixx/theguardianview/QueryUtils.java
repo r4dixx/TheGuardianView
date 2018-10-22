@@ -1,5 +1,6 @@
 package com.r4dixx.theguardianview;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import org.json.JSONArray;
