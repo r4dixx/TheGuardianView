@@ -2,8 +2,6 @@ package com.r4dixx.theguardianview;
 
 import android.util.Log;
 
-import com.squareup.picasso.Picasso;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,11 +12,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Helper methods to request and receive article data from The Guardian.
@@ -62,7 +60,12 @@ public final class QueryUtils {
                 String url = currentArticle.optString("webUrl");
                 String date = currentArticle.optString("webPublicationDate");
                 String thumbnailUrl = fields.optString("thumbnail");
-                Article article = new Article(title, url, date, thumbnailUrl);
+
+                // Random text in buttons in an array of 7 strings (see strings.xml)
+                String[] arrayOfStrings = ContextGetter.getContext().getResources().getStringArray(R.array.button_text);
+                String buttonText = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
+
+                Article article = new Article(title, url, date, thumbnailUrl, buttonText);
                 articles.add(article);
             }
 

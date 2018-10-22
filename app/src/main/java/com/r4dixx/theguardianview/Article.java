@@ -7,12 +7,14 @@ public class Article {
     private String mUrl;
     private String mTime;
     private String mThumbnailUrl;
+    private String mButtonText;
 
-    public Article(String title, String url, String time, String thumbnailUrl) {
+    public Article(String title, String url, String time, String thumbnailUrl, String buttonText) {
         mTitle = title;
         mUrl = url;
         mTime = time;
         mThumbnailUrl = thumbnailUrl;
+        mButtonText = buttonText;
     }
 
     public String getTitle() {
@@ -29,5 +31,9 @@ public class Article {
 
     public String getThumbnailUrl() {
         return mThumbnailUrl;
+    }
+
+    public String getButtonText() {
+        return mButtonText;
     }
 }

@@ -45,6 +45,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         String originalTitle = currentArticle.getTitle();
         String time = currentArticle.getTime();
         String thumbnailUrl = currentArticle.getThumbnailUrl();
+        String buttonText = currentArticle.getButtonText();
 
         TextView cardTitle = listItemView.findViewById(R.id.cardTitle);
         TextView cardDesc = listItemView.findViewById(R.id.cardDesc);
@@ -117,11 +118,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         String date = parts[0];
         cardDate.setText(date);
 
-        // Random text in buttons in an array of 4 strings (see strings.xml)
-        // TODO: Move this piece to hook up buttons with their parent Card (probably a getter to set in Article)
-        String[] arrayOfStrings = getContext().getResources().getStringArray(R.array.button_text);
-        String randomString = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
-        cardButton.setText(randomString);
+        cardButton.setText(buttonText);
 
         return listItemView;
 
