@@ -135,7 +135,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.no_articles);
-        mAdapter.clear();
         SwipeRefreshLayout swipeLayout = findViewById(R.id.swiperefresh);
         swipeLayout.setRefreshing(false);
 
