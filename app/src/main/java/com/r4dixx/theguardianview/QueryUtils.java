@@ -62,11 +62,12 @@ public final class QueryUtils {
                 String date = currentArticle.optString("webPublicationDate");
                 String thumbnailUrl = fields.optString("thumbnail");
 
+                // TODO fix random button texts behavior
                 // Random text in buttons in an array of 7 strings (see strings.xml)
-                String[] arrayOfStrings = ContextGetter.getContext().getResources().getStringArray(R.array.button_text);
-                String buttonText = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
+                // String[] arrayOfStrings = ContextGetter.getContext().getResources().getStringArray(R.array.button_text);
+                // String buttonText = arrayOfStrings[new Random().nextInt(arrayOfStrings.length)];
 
-                Article article = new Article(title, url, date, thumbnailUrl, buttonText);
+                Article article = new Article(title, url, date, thumbnailUrl, "Read more");
                 articles.add(article);
             }
 
