@@ -11,7 +11,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -38,7 +37,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SwipeRefreshLayout swipeLayout = findViewById(R.id.swiperefresh);
 
         // Sets the toolbar as the app bar for the activity and hides title to allow custom text
         android.support.v7.widget.Toolbar toolBar = findViewById(R.id.toolbar_main);
@@ -84,16 +82,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             mEmptyStateTextView.setText(R.string.no_internet);
             loaderManager.restartLoader(ARTICLE_LOADER_ID, null, this);
         }
-
-        swipeLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        loaderManager.restartLoader(ARTICLE_LOADER_ID, null, ArticleActivity.this);
-                    }
-                }
-        );
-
     }
 
 
@@ -135,8 +123,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.no_articles);
-        SwipeRefreshLayout swipeLayout = findViewById(R.id.swiperefresh);
-        swipeLayout.setRefreshing(false);
 
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);

@@ -9,9 +9,9 @@
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/toolbar_padding_bottom"
+        android:paddingStart="@dimen/toolbar_padding_sides"
         android:paddingEnd="@dimen/toolbar_padding_sides"
-        android:paddingStart="@dimen/toolbar_padding_sides">
+        android:paddingBottom="@dimen/toolbar_padding_bottom">
 
         <TextView
             style="@style/ToolbarTextTheme"
@@ -21,20 +21,14 @@
             android:text="@string/activity_main_title" />
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swiperefresh"
+    <ListView
+        android:id="@+id/list"
+        style="@style/ListViewTheme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_main">
-
-        <ListView
-            android:id="@+id/list"
-            style="@style/ListViewTheme"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/activity_margins" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_below="@id/toolbar_main"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/activity_margins" />
 
     <!-- Only visible when the list has no items. -->
     <TextView
