@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -33,6 +34,8 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
     final LoaderManager loaderManager = getLoaderManager();
 
+    ListView mListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,18 +52,18 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         int uiOptions = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
         decorView.setSystemUiVisibility(uiOptions);
 
-        ListView listView = findViewById(R.id.list);
+        mListView = findViewById(R.id.list);
 
         // Hook up the TextView as the empty view of the ListView
         mEmptyStateTextView = findViewById(R.id.empty_view);
-        listView.setEmptyView(mEmptyStateTextView);
+        mListView.setEmptyView(mEmptyStateTextView);
 
         // This is where we ask the adapter to go fetch the ArrayList in QueryUtils
         // ↑ TBC NOT SURE ABOUT THIS ↑
         mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
-        listView.setAdapter(mAdapter);
+        mListView.setAdapter(mAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Article currentArticle = mAdapter.getItem(position);
@@ -123,7 +126,9 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.no_articles);
-
+        Parcelable state = mListView.onSaveInstanceState();
+        mAdapter.clear();
+        mListView.onRestoreInstanceState(state);
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
         }
