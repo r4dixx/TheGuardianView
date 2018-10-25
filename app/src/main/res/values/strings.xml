@@ -16,8 +16,8 @@
         <item>Where we stand</item>
     </string-array>
     <!-- Empty and failing text [CHAR MIN=1] -->
-    <string name="no_articles">Oops, no articles found.\nIs your API key correct?</string>
-    <string name="no_internet">Oops, no internet.\nPlease check your network connection.</string>
+    <string name="no_articles">Oops, no articles found.\nIs your API key correct?\n\nPlease enter a valid API key\nand restart the application.</string>
+    <string name="no_internet">Oops, no internet.\n\nPlease check your network\nand restart the application.</string>
 
     <!-- Settings -->
     <!-- Activity title [CHAR MIN=1]-->
