@@ -73,15 +73,12 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
             }
         });
 
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
         } else {
-            View loadingIndicator = findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.GONE);
             mEmptyStateTextView.setText(R.string.no_internet);
             loaderManager.restartLoader(ARTICLE_LOADER_ID, null, this);
         }
@@ -125,12 +122,17 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
-        mEmptyStateTextView.setText(R.string.no_articles);
         Parcelable state = mListView.onSaveInstanceState();
         mAdapter.clear();
         mListView.onRestoreInstanceState(state);
+
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
+        } else if (networkInfo != null && networkInfo.isConnected()) {
+            mEmptyStateTextView.setText(R.string.no_articles);
         }
     }
 
