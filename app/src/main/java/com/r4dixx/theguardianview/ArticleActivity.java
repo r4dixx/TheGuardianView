@@ -35,6 +35,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     final LoaderManager loaderManager = getLoaderManager();
 
     ListView mListView;
+    Parcelable state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,8 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
 
+        state = mListView.onSaveInstanceState();
+
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         String apiKey = sharedPrefs.getString(
@@ -122,7 +125,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderCallback
 
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
-        Parcelable state = mListView.onSaveInstanceState();
         mAdapter.clear();
         mListView.onRestoreInstanceState(state);
 
