@@ -62,12 +62,10 @@ Finally, head to the SettingsActivity and replace the default API key `test` by 
 
 <h2>Contributing</h2>
 
-This project is open to suggestions and improvements. Simply create a Pull Request and I'll have a look.
-
-The Guardian API documentation can be found <a href="https://open-platform.theguardian.com/documentation/" target="_blank">here</a>.
+This project is open to code improvements.
 
 <h2>Project status</h2>
-Open to translations, code improvements, feature suggestions... Any contribution is most welcome!
+Open to code improvements only. Closed for anything else.
 
 <h2>Credits</h2>
 
