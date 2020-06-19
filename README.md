@@ -61,11 +61,10 @@ Finally, head to the SettingsActivity and replace the default API key `test` by 
 <strong>Warning!</strong> Your API key is private and should not be shared to anyone.
 
 <h2>Contributing</h2>
-
-This project is open to code improvements.
+No contribution can be made.
 
 <h2>Project status</h2>
-Open to code improvements only. Closed for anything else.
+Closed.
 
 <h2>Credits</h2>
 
